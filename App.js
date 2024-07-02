@@ -1,40 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Import BrowserRouter, Routes, and Route
-import EmployeeForm from './Components/EmployeeForm';
-import EmployeeDetail from './Components/EmployeeDetail';
-import EmployeeList from './Components/EmployeeList';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css'; // Make sure App.css exists in src directory
+import Header from './Components/Header'; // Adjust path based on your structure
+import EmployeeForm from './Components/EmployeeForm'; // Adjust path based on your structure
+import EmployeeDetail from './Components/EmployeeDetail'; // Adjust path based on your structure
+import EmployeeList from './Components/EmployeeList'; // Adjust path based on your structure
 
 function App() {
-  // define the property for the employee, the function, and the default state.
-  const [employees, setEmployees] = useState([]);
+  const [employees, setEmployees] = React.useState([]);
 
-  // maintain an array of current employees
   const addEmployee = (employee) => {
     setEmployees([...employees, employee]);
   };
 
-  // save the employee array to local storage
   const saveData = () => {
     localStorage.setItem('employees', JSON.stringify(employees));
   };
 
   return (
-    // create the browser component and define the paths
-    <BrowserRouter>
-    <div>
-      <Routes>
-        <Route path="/" element={
-          <>
-            <EmployeeForm onSubmit={addEmployee} />
-            <EmployeeList employees={employees} />
-            <button onClick={saveData}>Save Data</button>
-          </>
-        } />
-        <Route path="/employees/:id" element={<EmployeeDetail employees={employees} />} />
-      </Routes>
-    </div>
-  </BrowserRouter>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <EmployeeForm onSubmit={addEmployee} />
+              <EmployeeList employees={employees} />
+              <button onClick={saveData}>Save Data</button>
+            </>
+          } />
+          <Route path="/employees/:id" element={<EmployeeDetail employees={employees} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

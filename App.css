@@ -1,9 +1,25 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark text color */
+  font-family: Arial, sans-serif; /* Optional: Set a specific font */
+  padding: 20px;
+}
+
+.App-header {
+  background-color: #007bff; /* Blue background */
+  width: 100%;
+  padding: 20px 0;
+  color: white;
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 200px; /* Adjusted logo height */
   pointer-events: none;
 }
 
@@ -13,19 +29,13 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App-link {
+  color: #61dafb; /* Light blue for links */
+  text-decoration: none; /* Remove underline from links */
 }
 
-.App-link {
-  color: #61dafb;
+.App-link:hover {
+  text-decoration: underline; /* Underline links on hover */
 }
 
 @keyframes App-logo-spin {
